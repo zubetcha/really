@@ -13,10 +13,8 @@ const menuList = [
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div className="w-full flex gap-x-5">
-			<div className="shrink-0">
-				<SideMenu menuList={menuList} />
-			</div>
+		<div className="w-full flex flex-col gap-y-5">
+			<SideMenu menuList={menuList} />
 			<div className="w-full">{children}</div>
 		</div>
 	);
