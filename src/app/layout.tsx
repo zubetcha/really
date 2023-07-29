@@ -69,7 +69,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={`${pretendard.className} bg-slate-0`}>
 				<Header />
-				<div className="mt-16 mx-auto w-256">{children}</div>
+				<div className="mt-16">{children}</div>
 			</body>
 		</html>
 	);

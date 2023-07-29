@@ -1,43 +1,37 @@
 import React from 'react';
+import { COLORS, BG_COLORS, BORDER_COLORS } from '@/lib/constants/style';
 
-type Props = {
+export type ButtonProps = {
 	children: React.ReactNode;
 	size?: 'lg' | 'md' | 'sm';
 	variant?: 'text' | 'filled' | 'outlined';
 	shape?: 'round' | 'square';
 	color?: 'primary' | 'secondary';
+	text?: string;
+	className?: string;
 	disabled?: boolean;
 	fullWidth?: boolean;
 	onClick: () => void;
 };
 
 const variants = {
-	text: 'bg-transparent text-slate-900',
+	text: 'bg-transparent',
 	filled: '',
-	outlined: 'bg-transparent text-slate-900 border',
-};
-
-const colors = {
-	primary: 'blue-500',
-	secondary: 'gray-800',
-	success: '',
-	error: 'red-500',
-	info: '',
-	warning: 'yellow-400',
+	outlined: 'bg-transparent border',
 };
 
 const bgColors = {
-	primary: `bg-${colors.primary} text-slate-100`,
-	secondary: `bg-${colors.secondary} text-slate-100`,
-	error: `bg-${colors.error} text-slate-100`,
-	warning: `bg-${colors.warning} text-slate-100`,
+	primary: `${BG_COLORS.primary} text-slate-100`,
+	secondary: `${BG_COLORS.secondary} text-slate-100`,
+	error: `${BG_COLORS.error} text-slate-100`,
+	warning: `${BG_COLORS.warning} text-slate-100`,
 };
 
 const borderColors = {
-	primary: `border-${colors.primary}`,
-	secondary: `border-${colors.secondary}`,
-	error: `border-${colors.error}`,
-	warning: `border-${colors.warning}`,
+	primary: `${BORDER_COLORS.primary}`,
+	secondary: `${BORDER_COLORS.secondary}`,
+	error: `${BORDER_COLORS.error}`,
+	warning: `${BORDER_COLORS.warning}`,
 };
 
 const sizes = {
@@ -57,10 +51,12 @@ const Button = ({
 	variant = 'filled',
 	shape = 'round',
 	color = 'primary',
+	text = 'text-slate-900',
+	className = '',
 	disabled,
 	fullWidth,
 	onClick,
-}: Props) => {
+}: ButtonProps) => {
 	const isFilled = variant === 'filled';
 	const isOutlined = variant === 'outlined';
 
@@ -74,7 +70,7 @@ const Button = ({
 		<button
 			disabled={disabled}
 			onClick={onClick}
-			className={`flex flex-row items-center justify-center ${bgColor} ${borderColor} ${btnSize} ${rounded} ${width}`}
+			className={`flex flex-row items-center justify-center ${bgColor} ${borderColor} ${btnSize} ${rounded} ${width} ${text} ${className}`}
 		>
 			{children}
 		</button>
