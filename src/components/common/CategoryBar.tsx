@@ -27,7 +27,7 @@ const CategoryBar = ({ menuList }: Props) => {
 	};
 
 	return (
-		<ul>
+		<ul className="flex items-center gap-x-3">
 			{menuList.map(({ id, title, path }) => (
 				<li key={id}>
 					<Button

@@ -10,6 +10,11 @@ const menuList = [
 		title: '전월세 전환율 계산',
 		path: `${rootPath}/conversion-rate`,
 	},
+	{
+		id: 'INTERCONVERSION_RATE',
+		title: '상호전환이율 계산',
+		path: `${rootPath}/interconversion-rate`,
+	},
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
