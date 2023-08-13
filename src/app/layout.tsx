@@ -1,59 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
-// import { Inter } from 'next/font/google'
-import localFont from 'next/font/local';
-import { Header } from '@/components/common/Header';
+import { ConfigProvider } from 'antd';
 
-// const inter = Inter({ subsets: ['latin'] })
-const pretendard = localFont({
-	src: [
-		{
-			path: '../../public/font/woff2/Pretendard-Black.woff2',
-			weight: '900',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-ExtraBold.woff2',
-			weight: '800',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-Bold.woff2',
-			weight: '700',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-SemiBold.woff2',
-			weight: '600',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-Medium.woff2',
-			weight: '500',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-Regular.woff2',
-			weight: '400',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-Light.woff2',
-			weight: '300',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-ExtraLight.woff2',
-			weight: '200',
-			style: 'normal',
-		},
-		{
-			path: '../../public/font/woff2/Pretendard-Thin.woff2',
-			weight: '100',
-			style: 'normal',
-		},
-	],
-});
+import { Header } from '@/components/common/Header';
+import theme from '@/lib/styles/theme';
+import Pretendard from '@/lib/styles/font';
+import StyledComponentsRegistry from '@/lib/styles/AntdRegistry';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -67,9 +19,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={`${pretendard.className} bg-slate-0`}>
-				<Header />
-				<div className="mt-16">{children}</div>
+			<body className={`${Pretendard.className} bg-slate-0`}>
+				<ConfigProvider theme={theme}>
+					<StyledComponentsRegistry>
+						<Header />
+						<div className="my-16">{children}</div>
+					</StyledComponentsRegistry>
+				</ConfigProvider>
 			</body>
 		</html>
 	);

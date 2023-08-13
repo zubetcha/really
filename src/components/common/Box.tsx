@@ -3,7 +3,7 @@ type Props = {
 };
 
 const Box = ({ children }: Props) => {
-	return <div className="bg-white shadow-lg rounded-xl p-5">{children}</div>;
+	return <div className="bg-white shadow-md rounded-xl p-5">{children}</div>;
 };
 
 export default Box;
