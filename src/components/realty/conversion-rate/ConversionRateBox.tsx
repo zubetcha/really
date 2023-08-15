@@ -8,8 +8,12 @@ type Props = {
 const ConversionRateBox = ({ title, children }: Props) => {
 	return (
 		<Box>
-			<h3 className="text-xl font-bold flex items-center gap-x-2">{title}</h3>
-			<div>{children}</div>
+			<div className="flex flex-col gap-y-6">
+				<h3 className="text-2xl font-bold text-gray-800 flex items-center gap-x-2">
+					{title}
+				</h3>
+				<div className="flex flex-col gap-y-4">{children}</div>
+			</div>
 		</Box>
 	);
 };

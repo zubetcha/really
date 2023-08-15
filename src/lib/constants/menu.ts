@@ -12,11 +12,13 @@ export const PAGE_MENU_LIST = {
 		{
 			id: 'CONVERSION_RATE',
 			title: '전월세 전환율 계산',
+			icon: '🔍',
 			path: `/calc/conversion-rate`,
 		},
 		{
 			id: 'INTERCONVERSION_RATE',
 			title: '보증금 증감액 계산',
+			icon: '⚖️',
 			path: `/calc/interconversion-rate`,
 		},
 	],

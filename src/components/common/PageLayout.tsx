@@ -12,7 +12,7 @@ const PageLayout = ({ title, children }: Props) => {
 		<div className="w-full flex flex-col">
 			<div className="m-auto w-256">
 				<div className="py-8">
-					<h1 className="text-gray-800 font-semibold text-3xl">{title}</h1>
+					<h1 className="text-gray-900 font-semibold text-3xl">{title}</h1>
 				</div>
 				<div>{children}</div>
 			</div>
