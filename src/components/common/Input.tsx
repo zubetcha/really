@@ -3,18 +3,20 @@ import { Input as AntdInput } from 'antd';
 import type { InputProps } from 'antd';
 
 type Props = {
-	id: string;
+	name: string;
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	id?: string;
 	label?: React.ReactNode;
 	placeholder?: string;
 	helperText?: string;
 } & InputProps;
 
 const Input = ({
-	id,
+	name,
 	value,
 	onChange,
+	id,
 	label,
 	placeholder,
 	helperText,
@@ -29,7 +31,7 @@ const Input = ({
 			)}
 			<AntdInput
 				id={id}
-				name={id}
+				name={name}
 				value={value}
 				placeholder={placeholder}
 				onChange={onChange}

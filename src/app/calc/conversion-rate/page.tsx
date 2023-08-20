@@ -10,15 +10,13 @@ import {
 
 import ConversionRateBox from '@/components/realty/conversion-rate/ConversionRateBox';
 import Input from '@/components/common/Input';
+import { init } from 'next/dist/compiled/@vercel/og/satori';
 
 const initialMonthlyFeeForm = Object.fromEntries(
-	JEONSE_TO_MONTHLY_FEE.map(({ id, initialValue }) => [
-		id,
-		initialValue.toString(),
-	])
+	JEONSE_TO_MONTHLY_FEE.map(({ id, initialValue }) => [id, initialValue])
 );
 const initialJeonseFrom = Object.fromEntries(
-	MONTHLY_FEE_TO_JEONSE.map(({ id }) => [id, ''])
+	MONTHLY_FEE_TO_JEONSE.map(({ id, initialValue }) => [id, initialValue])
 );
 
 const ConversionRatePage = () => {
@@ -39,17 +37,20 @@ const ConversionRatePage = () => {
 				}
 			>
 				{JEONSE_TO_MONTHLY_FEE.map(
-					({ id, type, label, suffix, placeholder }) => (
+					({ id, type, label, suffix, placeholder, min, max, unit }) => (
 						<Input
 							key={`to-monthly-fee-${id}`}
-							id={`to-monthly-fee-${id}`}
+							name={id}
 							size="large"
 							label={label}
 							type={type}
 							placeholder={placeholder}
 							suffix={suffix}
+							min={min}
+							max={max}
 							value={monthlyFeeCalculation.form[id]}
-							onChange={monthlyFeeCalculation.handleFormChange}
+							defaultValue={initialMonthlyFeeForm[id]}
+							onChange={(e) => monthlyFeeCalculation.handleFormChange(e, unit)}
 						/>
 					)
 				)}
@@ -76,17 +77,20 @@ const ConversionRatePage = () => {
 				}
 			>
 				{MONTHLY_FEE_TO_JEONSE.map(
-					({ id, type, label, suffix, placeholder }) => (
+					({ id, type, label, suffix, placeholder, min, max, unit }) => (
 						<Input
-							key={`to-monthly-fee-${id}`}
-							id={`to-monthly-fee-${id}`}
+							key={`to-jeonse-${id}`}
+							name={id}
 							size="large"
 							label={label}
 							type={type}
-							suffix={suffix}
 							placeholder={placeholder}
+							suffix={suffix}
+							min={min}
+							max={max}
 							value={jeonseCalculation.form[id]}
-							onChange={jeonseCalculation.handleFormChange}
+							defaultValue={initialJeonseFrom[id]}
+							onChange={(e) => jeonseCalculation.handleFormChange(e, unit)}
 						/>
 					)
 				)}
